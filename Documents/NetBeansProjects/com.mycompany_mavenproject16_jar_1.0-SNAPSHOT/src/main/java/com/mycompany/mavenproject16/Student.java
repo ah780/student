@@ -236,13 +236,25 @@ public class Student {
 
     public static String cmpare(Student s, Student s2) {
 
-        if (avrg(s) > avrg(s2)) {
-            return ("avarege for student " + s.name + " is higher");
-        } else if (avrg(s2) > avrg(s)) {
-            return ("avarege for student " + s2.name + " is higher");
+        if (s.name.equals(s2.name) && s.age == s2.age && s.city.equals(s2.city) && s.collage.equals(s2.collage)) {
+            for (int i = 0; i < s.mark.length; i++) {
+
+                if (s.mark[i] != s2.mark[i]) {
+                    return "the two opject not equel mark diferent";
+                }
+
+            }
+            for (int i = 0; i < s.courses.length; i++) {
+
+                if (!s.courses[i].equalsIgnoreCase(s2.courses[i])) {
+                    return "the two object not equel courses diferent";
+                }
+
+            }
         } else {
-            return ("avarege for students " + s2.name + " " + s.name + " " + " is equel");
+            return "the two object not equel name or age or city or college diferent";
         }
+        return "the two object are equel but the id";
 
     }
 
