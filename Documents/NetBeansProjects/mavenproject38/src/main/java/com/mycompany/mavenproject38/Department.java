@@ -7,11 +7,20 @@ import java.util.Arrays;
 public class Department implements Checable {
     
     Patint [] patint;
+    private String name;
     private int c=0;
     private int max;
-    public Department() {
+    public Department(String name) {
+        this.name=name;
         max=5;
         patint=new Patint[max];
+    }
+    
+    public void SetName(String name){
+        this.name=name;
+    }
+    public String getName(){
+        return name;
     }
 
     public Patint getPatint(int index) {

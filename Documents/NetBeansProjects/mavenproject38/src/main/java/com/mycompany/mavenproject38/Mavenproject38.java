@@ -1,48 +1,38 @@
-
 package com.mycompany.mavenproject38;
+
 import java.util.Date;
 
 public class Mavenproject38 {
 
     public static void main(String[] args) {
-        
+
+       Department d1 = new Department("Med");
+        Department d2 = new Department("high");
+         Department d3 = new Department("easy");
+       Patint p1 = new Patint("ali",111, new java.util.Date(2005 - 1900, 1, 1),d1);
+       Patint p2 = new Patint("MahmoD",112, new java.util.Date(2004 - 1900, 12, 11),d1);
        
-        Date d = new Date(11,12,2006);
-        
-        Department [] dept = new Department[2];
-        
-        dept[0]=new Department();
-        dept[0].setPatint(new Patint("mahmos",111,d));
-        dept[0].setPatint(new Patint("ahmad",112,d));
-        dept[0].setPatint(new Patint("ali",123,d));
-        dept[0].setPatint(new Patint("mld",1234,d));
-        dept[0].setPatint(new Patint("ali",123,d));
-        dept[1]=new Department();
-        dept[1].setPatint(new Patint("rami",222,d));
-        dept[1].setPatint(new Patint("mlhomd",1235,d));
-        dept[1].setPatint(new Patint("ali",123,d));
-        dept[1].setPatint(new Patint("ali",123,d));
-        dept[1].setPatint(new Patint("ali",123,d));
-         
-        printDeptPatint(dept);
-        
+       d1.setPatint(p1);
+       d1.setPatint(p2);
+       
+       Department [] all= {d1,d2,d3};
+       printDeptPatint(all);
+
     }
-    
-    public static void printDeptPatint(Department [] dept){
-        
-        for (int i = 0; i <dept.length; i++) {
-            
-            for (int j = 0; j <dept[i].getPatint().length; j++) {
-                
-                if(dept[i].getPatint(j).getName().charAt(0)=='M' ||dept[i].getPatint(j).getName().charAt(0)=='m'
-                        &&dept[i].getPatint(j).getName().charAt(dept[i].getPatint(j).getName().length()-1)=='D' ||dept[i].getPatint(j).getName().charAt(dept[i].getPatint(j).getName().length()-1)=='d'
-                        ){
-                    System.out.println(dept[i]);
-                }
-                
-            }
-           
+
+    public static void printDeptPatint(Department[] dept) {
+
+        for (Department dept1 : dept) {
+           for(Patint p : dept1.getPatint()){
+               if(p!=null){
+                   String name = p.getName();
+                   
+                   if(name.startsWith('M'+"") || name.startsWith('m'+"") && name.endsWith('d'+"") || name.endsWith('D'+"")){
+                       System.out.println("Department "+dept1.getName() + " Patint "+name);
+                   }
+               }
+           }
         }
-        
+
     }
 }
